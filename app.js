@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 const summarizeText = require('./summarize.js');
 app.use(express.json());
 
-app.use(express.static('./public'));
+app.use(express.static('public'));
 app.post('/summarize', (req, res) => {
   const text = req.body.text_to_summarize;
   summarizeText(text)
@@ -15,7 +15,6 @@ app.post('/summarize', (req, res) => {
       console.log(error.message);
     });
 });
-// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
